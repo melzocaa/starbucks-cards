@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Starbucks Coffee</title>
+    <link rel="icon" type="image/x-icon" href="assets/images/logo.png">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+    </style>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        poppins: ['Poppins', 'sans-serif'],
+                    },
+                    keyframes: {
+                        flutuar: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-40px)' },
+                        }
+                    },
+                    animation: {
+                        flutuar: 'flutuar 3s ease-in-out infinite',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="text-[#222222] m-0 font-poppins w-full bg-white">
+
+    <header class="w-auto text-center p-0 mt-20">
+        <img src="assets/images/logo.png" alt="Starbucks Coffee" class="inline-block">                    
+        <nav class="w-auto text-center font-bold">
+            <ul class="list-none p-0">
+                <li class="inline-block px-5">
+                    <a href="#cardapio" class="no-underline text-[#222222] hover:text-[#0d6e00] transition-colors duration-200">CARDÁPIO</a>
+                </li>    
+            </ul>            
+        </nav>
+
+        <!-- menu hamburguer -->
+        <button id="menuBtn" class="md:hidden text-3xl">
+            ☰
+        </button>
+    </header>
+
+    <!-- Menu Mobile -->
+    <div id="mobileMenu"
+        class="fixed top-0 right-[-100%] w-[70%] h-full bg-white shadow-lg transition-all duration-300 p-8 md:hidden z-50">
+
+        <button id="closeBtn" class="text-2xl mb-6">
+            ✕
+        </button>
+
+        <ul class="flex flex-col gap-6 text-lg">
+            <li><a href="#cardapio" class="hover:text-primary">Cardápio</a></li>
+        </ul>
+
+    </div>
+
+     <!-- ================= BANNER ================= -->
+    <section class="w-full text-center mt-8">
+        <div class="inline-block align-middle w-[30%] max-[900px]:w-full max-[900px]:mb-[1.875rem]">
+            <p class="text-[2.5rem] text-left px-[10%] max-[900px]:text-[1.625rem] max-[900px]:text-center max-[900px]:px-[5%]">O verdadeiro sabor do café!</p>
+            <p class="text-[2.5rem] text-left px-[10%] max-[900px]:text-[1.625rem] max-[900px]:text-center max-[900px]:px-[5%] mt-4">
+                <a class="bg-[#a7c4a3] rounded-[2.5rem] p-[3%] text-[1.25rem] no-underline text-[#222222] hover:text-[#0d6e00] transition-colors duration-200 inline-block" href="#cardapio">VEJA O CARDÁPIO</a>
+            </p>
+        </div>
+        <div class="inline-block align-middle w-[30%] max-[900px]:w-full max-[900px]:mb-[1.875rem]">
+            <img class="w-[90%] !w-[40%] min-w-[200px] animate-flutuar mx-auto" src="assets/images/img1.png" alt="Café">
+        </div>
+    </section>
+
+      <!-- ================= CARDÁPIO ================= -->
+    <section id="cardapio" class="box-border border-t border-dashed border-[#999999] max-w-[43.75rem] mx-auto mt-[6.25rem] p-4 text-center">
+
+        <h1 class="text-[2em] font-bold mt-[1em] mb-[0.67em]">
+            Cardápio
+        </h1>
+
+        <!-- menu categoria inicio-->
+        <nav id="nav-categorias" class="overflow-x-auto whitespace-nowrap snap-x flex justify-center gap-2 mt-6 pb-2">
+            <button data-cat="cafes"
+                class="snap-start px-6 py-2 rounded-full bg-[#063600] text-white font-bold text-sm transition-transform duration-150 cursor-pointer flex-shrink-0 btn-cat">
+                Cafés
+            </button>
+            <button data-cat="frappuccinos"
+                class="snap-start px-6 py-2 rounded-full bg-[#ebebeb] text-[#222222] font-bold text-sm transition-transform duration-150 cursor-pointer flex-shrink-0 btn-cat">
+                Frappuccinos
+            </button>
+        </nav>
+        <!-- menu categoria fim-->
+
+        <!-- cardapio -->
+        <div id="cat-cafes" class="categoria-conteudo">
+    <div class="text-left text-[#063600] font-extrabold text-[22px] mt-8 mb-4">Cafés</div>
+    <div class="grid grid-cols-2 gap-4">
+        
+        <div class="bg-[#ceddcc] rounded-[20px] p-3 shadow-sm border border-[#b8c9b7] relative flex flex-col hover:-translate-y-[5px] hover:shadow-[0_15px_20px_rgba(0,0,0,0.1)] transition-all duration-200 group">
+            <div class="absolute inset-0 z-0 cursor-pointer" onclick="abrirModalDetalhes('Caramelo Macchiato', 24.50, 'Leite vaporizado, um toque de baunilha, dose de espresso e cobertura de caramelo', '', 'c_1')">
+            </div>
+            <button class="absolute top-3 right-3 text-gray-500 hover:text-[#063600] transition-colors z-10">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                    stroke="currentColor" class="w-5 h-5">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                </svg>
+            </button>
+            
+            <div class="text-left w-full mt-6 relative z-10 pointer-events-none">
+                <h4 class="font-bold text-gray-900 text-sm leading-tight">Caramelo Macchiato</h4>
+                <p class="text-[#063600] font-black text-lg leading-none mt-1">R$ 24,50</p>
+            </div>
+            <button onclick="adicionarItem('c_1', 'Caramelo Macchiato', 24.50)" class="w-full bg-[#063600] text-white py-2 rounded-xl text-xs font-bold mt-3 shadow-md hover:bg-[#042400] active:scale-95 transition-all z-10 relative">
+                Adicionar ao carrinho
+            </button>
+        </div>
+
+        <div class="bg-[#ceddcc] rounded-[20px] p-3 shadow-sm border border-[#b8c9b7] relative flex flex-col hover:-translate-y-[5px] hover:shadow-[0_15px_20px_rgba(0,0,0,0.1)] transition-all duration-200 group">
+            <div class="absolute inset-0 z-0 cursor-pointer" onclick="abrirModalDetalhes('Cappuccino Tradicional', 22.00, 'Espresso com leite cremoso', '', 'c_2')">
+            </div>
+            <button class="absolute top-3 right-3 text-gray-500 hover:text-[#063600] transition-colors z-10">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                    stroke="currentColor" class="w-5 h-5">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                </svg>
+            </button>
+            
+            <div class="text-left w-full mt-6 relative z-10 pointer-events-none">
+                <h4 class="font-bold text-gray-900 text-sm leading-tight">Cappuccino Tradicional</h4>
+                <p class="text-[#063600] font-black text-lg leading-none mt-1">R$ 22,00</p>
+            </div>
+            <button onclick="adicionarItem('c_2', 'Cappuccino Tradicional', 22.00)" class="w-full bg-[#063600] text-white py-2 rounded-xl text-xs font-bold mt-3 shadow-md hover:bg-[#042400] active:scale-95 transition-all z-10 relative">
+                Adicionar ao carrinho
+            </button>
+        </div>
+
+        <div class="bg-[#ceddcc] rounded-[20px] p-3 shadow-sm border border-[#b8c9b7] relative flex flex-col hover:-translate-y-[5px] hover:shadow-[0_15px_20px_rgba(0,0,0,0.1)] transition-all duration-200 group">
+            <div class="absolute inset-0 z-0 cursor-pointer" onclick="abrirModalDetalhes('Cappuccino Brigadeiro', 27.00, 'Espresso e leite cremoso com calda de brigadeiro e granulado de chocolate belga ao leite', '', 'c_3')">
+            </div>
+            <button class="absolute top-3 right-3 text-gray-500 hover:text-[#063600] transition-colors z-10">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                    stroke="currentColor" class="w-5 h-5">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                </svg>
+            </button>
+            
+            <div class="text-left w-full mt-6 relative z-10 pointer-events-none">
+                <h4 class="font-bold text-gray-900 text-sm leading-tight">Cappuccino Brigadeiro</h4>
+                <p class="text-[#063600] font-black text-lg leading-none mt-1">R$ 27,00</p>
+            </div>
+            <button onclick="adicionarItem('c_3', 'Cappuccino Brigadeiro', 27.00)" class="w-full bg-[#063600] text-white py-2 rounded-xl text-xs font-bold mt-3 shadow-md hover:bg-[#042400] active:scale-95 transition-all z-10 relative">
+                Adicionar ao carrinho
+            </button>
+        </div>
+
+        <div class="bg-[#ceddcc] rounded-[20px] p-3 shadow-sm border border-[#b8c9b7] relative flex flex-col hover:-translate-y-[5px] hover:shadow-[0_15px_20px_rgba(0,0,0,0.1)] transition-all duration-200 group">
+            <div class="absolute inset-0 z-0 cursor-pointer" onclick="abrirModalDetalhes('Cappuccino Chocolate', 25.50, 'Calda de chocolate, espresso e leite cremoso, com deliciosa cobertura de chocolate e chocolate em pó', '', 'c_4')">
+            </div>
+            <button class="absolute top-3 right-3 text-gray-500 hover:text-[#063600] transition-colors z-10">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                    stroke="currentColor" class="w-5 h-5">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                </svg>
+            </button>
+            
+            <div class="text-left w-full mt-6 relative z-10 pointer-events-none">
+                <h4 class="font-bold text-gray-900 text-sm leading-tight">Cappuccino Chocolate</h4>
+                <p class="text-[#063600] font-black text-lg leading-none mt-1">R$ 25,50</p>
+            </div>
+            <button onclick="adicionarItem('c_4', 'Cappuccino Chocolate', 25.50)" class="w-full bg-[#063600] text-white py-2 rounded-xl text-xs font-bold mt-3 shadow-md hover:bg-[#042400] active:scale-95 transition-all z-10 relative">
+                Adicionar ao carrinho
+            </button>
+        </div>
+    </div>
+</div>
+
+<div id="cat-frappuccinos" class="categoria-conteudo hidden">
+    <div class="text-left text-[#063600] font-extrabold text-[22px] mt-8 mb-4">Frappuccinos</div>
+    <div class="grid grid-cols-2 gap-4">
+        
+        <div class="bg-[#ceddcc] rounded-[20px] p-3 shadow-sm border border-[#b8c9b7] relative flex flex-col hover:-translate-y-[5px] hover:shadow-[0_15px_20px_rgba(0,0,0,0.1)] transition-all duration-200 group">
+            <div class="absolute inset-0 z-0 cursor-pointer" onclick="abrirModalDetalhes('Super Morango', 26.50, 'Sem café. Leite com calda de morango, batidos com gelo, finalizado com chantilly.', '', 'f_1')">
+            </div>
+            <button class="absolute top-3 right-3 text-gray-500 hover:text-[#063600] transition-colors z-10">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                    stroke="currentColor" class="w-5 h-5">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                </svg>
+            </button>
+            
+            <div class="text-left w-full mt-6 relative z-10 pointer-events-none">
+                <h4 class="font-bold text-gray-900 text-sm leading-tight">Super Morango</h4>
+                <p class="text-[#063600] font-black text-lg leading-none mt-1">R$ 26,50</p>
+            </div>
+            <button onclick="adicionarItem('f_1', 'Super Morango', 26.50)" class="w-full bg-[#063600] text-white py-2 rounded-xl text-xs font-bold mt-3 shadow-md hover:bg-[#042400] active:scale-95 transition-all z-10 relative">
+                Adicionar ao carrinho
+            </button>
+        </div>
+
+        <div class="bg-[#ceddcc] rounded-[20px] p-3 shadow-sm border border-[#b8c9b7] relative flex flex-col hover:-translate-y-[5px] hover:shadow-[0_15px_20px_rgba(0,0,0,0.1)] transition-all duration-200 group">
+            <div class="absolute inset-0 z-0 cursor-pointer" onclick="abrirModalDetalhes('Caramelo', 28.50, 'Opção com ou sem café. Café, leite e essência de caramelo, batidos com gelo, finalizado com chantilly e cobertura de caramelo.', '', 'f_2')">
+            </div>
+            <button class="absolute top-3 right-3 text-gray-500 hover:text-[#063600] transition-colors z-10">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                    stroke="currentColor" class="w-5 h-5">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                </svg>
+            </button>
+            
+            <div class="text-left w-full mt-6 relative z-10 pointer-events-none">
+                <h4 class="font-bold text-gray-900 text-sm leading-tight">Caramelo</h4>
+                <p class="text-[#063600] font-black text-lg leading-none mt-1">R$ 28,50</p>
+            </div>
+            <button onclick="adicionarItem('f_2', 'Caramelo', 28.50)" class="w-full bg-[#063600] text-white py-2 rounded-xl text-xs font-bold mt-3 shadow-md hover:bg-[#042400] active:scale-95 transition-all z-10 relative">
+                Adicionar ao carrinho
+            </button>
+        </div>
+
+        <div class="bg-[#ceddcc] rounded-[20px] p-3 shadow-sm border border-[#b8c9b7] relative flex flex-col hover:-translate-y-[5px] hover:shadow-[0_15px_20px_rgba(0,0,0,0.1)] transition-all duration-200 group">
+            <div class="absolute inset-0 z-0 cursor-pointer" onclick="abrirModalDetalhes('Baunilha', 29.00, 'Sem café. Versão clássica, com baunilha e leite, batidos com gelo, finalizado com chantilly.', '', 'f_3')">
+            </div>
+            <button class="absolute top-3 right-3 text-gray-500 hover:text-[#063600] transition-colors z-10">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                    stroke="currentColor" class="w-5 h-5">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                </svg>
+            </button>
+            
+            <div class="text-left w-full mt-6 relative z-10 pointer-events-none">
+                <h4 class="font-bold text-gray-900 text-sm leading-tight">Baunilha</h4>
+                <p class="text-[#063600] font-black text-lg leading-none mt-1">R$ 29,00</p>
+            </div>
+            <button onclick="adicionarItem('f_3', 'Baunilha', 29.00)" class="w-full bg-[#063600] text-white py-2 rounded-xl text-xs font-bold mt-3 shadow-md hover:bg-[#042400] active:scale-95 transition-all z-10 relative">
+                Adicionar ao carrinho
+            </button>
+        </div>
+    </div>
+</div>
+        <!-- cardapio -->
+    </section>
+
+    <footer class="mt-[6.25rem] w-auto text-center p-[1.25rem] text-[0.875rem] text-black bg-[#89a885]">
+        <h3 class="text-[1.17em] font-bold my-[1em]">☕ Starbucks Coffee</h3>
+        <p class="m-[0.2rem] text-[#222222]">📍 Rua Prof. Toledo, 500, centro - Sorocaba</p>
+        <p class="m-[0.2rem] text-[#222222]">📞 WhatsApp: (15) 9999-1234</p>
+        <p class="m-[0.2rem] text-[#222222]">🕧 Aberto todos os dias das 14h às 23h</p>
+    </footer>
+
+    <a href="https://wa.me/5515991456699" target="_blank" class="fixed right-5 bottom-5">
+        <img src="assets/images/whatsapp.png" alt="link-whatsapp" class="w-10">
+    </a>
+
+     <!-- MODAL DE DETALHES DO PRODUTO -->
+   <div id="detalhes-modal"
+        class="fixed inset-0 bg-black/70 z-[80] flex justify-center items-center opacity-0 pointer-events-none transition-opacity duration-300 px-4">
+        <div class="bg-white w-full max-w-[400px] rounded-[30px] overflow-hidden transform scale-95 transition-transform duration-300 relative flex flex-col"
+            id="detalhes-modal-content">
+
+            <!-- Botão Fechar -->
+            <button onclick="fecharModalDetalhes()"
+                class="absolute top-4 right-4 bg-white/80 backdrop-blur-md text-gray-900 w-10 h-10 rounded-full flex justify-center items-center font-bold text-2xl shadow-sm z-10 hover:text-[#063600] active:scale-90 transition-all">&times;</button>
+
+            <!-- Infos -->
+            <div class="p-6">
+                <h2 id="detalhes-nome" class="text-3xl font-black text-gray-900 mb-1 leading-tight tracking-tight">Nome do
+                    Produto</h2>
+                <p id="detalhes-preco" class="text-2xl font-black text-[#063600] mb-4 drop-shadow-sm">R$ 0,00</p>
+                <div class="bg-[#ceddcc]/30 border border-[#ceddcc] rounded-xl p-4 mb-6">
+                    <p id="detalhes-desc" class="text-gray-700 text-sm leading-relaxed font-medium">Descrição detalhada do produto vai aqui...</p>
+                </div>
+
+                <button id="detalhes-btn-add"
+                    class="w-full bg-[#063600] text-white py-4 rounded-xl text-[17px] font-extrabold shadow-[0_8px_20px_-6px_rgba(6,54,0,0.5)] hover:shadow-[0_8px_25px_-4px_rgba(6,54,0,0.6)] hover:bg-[#042400] active:scale-[0.98] transition-all outline-none flex justify-center items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
+                        stroke="currentColor" class="w-5 h-5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                    </svg>
+                    Adicionar ao Pedido
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- RODAPÉ CARRINHO FIXO (Abre Modal) -->
+    <div id="carrinho-footer"
+        class="fixed bottom-0 left-0 w-full bg-[#063600] text-white p-4 z-50 shadow-[0_-4px_6px_rgba(0,0,0,0.1)] transform translate-y-full transition-transform duration-300 flex justify-between items-center cursor-pointer"
+        onclick="abrirModalCarrinho()">
+        <div>
+            <p class="text-sm font-medium">Resumo do Pedido</p>
+            <p class="text-xl font-bold">Total: <span id="carrinho-total">R$ 0,00</span></p>
+        </div>
+        <button class="bg-white text-[#063600] px-4 py-2 rounded-lg font-bold shadow-md active:scale-95 transition-all hover:bg-gray-100">
+            Ver Carrinho
+        </button>
+    </div>
+
+    <!-- MODAL DO CARRINHO (Detalhes) -->
+    <div id="carrinho-modal"
+        class="fixed inset-0 bg-black/60 z-[60] flex flex-col justify-end sm:justify-center items-center opacity-0 pointer-events-none transition-opacity duration-300">
+
+        <!-- Conteúdo do Modal -->
+        <div class="bg-white w-full sm:w-[500px] h-[85vh] sm:h-auto sm:max-h-[85vh] rounded-t-3xl sm:rounded-2xl flex flex-col transform translate-y-full sm:translate-y-0 sm:scale-95 transition-transform duration-300"
+            id="carrinho-modal-content">
+
+            <!-- Cabelho Modal -->
+            <div class="p-5 border-b flex justify-between items-center bg-[#ceddcc]/20 rounded-t-3xl sm:rounded-t-2xl">
+                <h2 class="text-2xl font-bold text-[#063600]">Seu Carrinho</h2>
+                <button onclick="fecharModalCarrinho()"
+                    class="text-3xl font-bold text-gray-400 hover:text-[#063600] transition-colors focus:outline-none">&times;</button>
+            </div>
+
+            <!-- Corpo Modal (Itens) -->
+            <div id="carrinho-itens-container" class="p-5 flex-1 overflow-y-auto flex flex-col gap-4">
+                </div>
+
+            <!-- Rodapé Modal (Checkout) -->
+            <div class="p-5 border-t bg-gray-50 rounded-b-3xl sm:rounded-b-2xl">
+                <div class="flex justify-between items-center mb-4">
+                    <span class="text-lg font-bold text-gray-800">Total do Pedido:</span>
+                    <span id="modal-carrinho-total" class="text-2xl font-black text-[#063600]">R$ 0,00</span>
+                </div>
+                <button onclick="fecharPedido()" id="btn-fechar-pedido"
+                    class="w-full bg-[#063600] text-white py-3 rounded-xl text-lg font-bold shadow-lg hover:bg-[#042400] active:scale-95 transition-all">
+                    Fechar Pedido (Usar GPS)
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    const botoes = document.querySelectorAll('.btn-cat');
+        const conteudos = document.querySelectorAll('.categoria-conteudo');
+
+        function mudarCategoria(cat){
+            //mostra apenas a categoria seleconada
+            conteudos.forEach(div => {
+                div.id === 'cat-' + cat
+                ? div.classList.remove('hidden')
+                : div.classList.add('hidden');
+            });
+            //atualiza estilo do botao ativo (agora com o tom verde!)
+            botoes.forEach(btn => {
+                if (btn.dataset.cat === cat) {
+                    btn.classList.add('bg-[#063600]', 'text-white');
+                    btn.classList.remove('bg-[#ebebeb]', 'text-[#222222]');
+                }else {
+                    btn.classList.remove('bg-[#063600]', 'text-white');
+                    btn.classList.add('bg-[#ebebeb]', 'text-[#222222]');
+                }
+            });
+        }
+
+        //ativa scroll suave para links internos
+        let startX = 0;
+        let startY = 0;
+
+        //evento de cada botao
+        botoes.forEach(btn => {
+            //touchstart é disparado assim que o dedo toca a tela
+            btn.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+                startY = e.touches[0].clientY;
+                //aplica class tailwind para efeito de clique
+                btn.classList.add('scale-95', 'opacity-80');
+            });
+            //touchend quando tira o dedo da tela
+            btn.addEventListener('touchend', (e) => {
+                //remove efeito visual
+                btn.classList.remove('scale-95', 'opacity-80');
+                //ultima posição do dedo antes de levantar
+                const endX = e.changedTouches[0].clientX;
+                const endY = e.changedTouches[0].clientY;
+                //calcula distancia percorrida pelo dedo em pixels
+                const deltaX = Math.abs(endX - startX);
+                const deltaY = Math.abs(endY - startY);
+                //logica matematica se moveu menos de 10px = clique intencional
+                if (deltaX < 10 && deltaY < 10) {
+                    // CORREÇÃO AQUI: mudado de database para dataset
+                    mudarCategoria(btn.dataset.cat);
+                }
+            });
+            //touchcancel se o celular aparecer uma ligação ou notificação popup
+            btn.addEventListener('touchcancel', () => {
+                btn.classList.remove('scale-95', 'opacity-80');
+            });
+            //click para usuarios desktop
+            btn.addEventListener('click', () => {
+                mudarCategoria(btn.dataset.cat);
+            });
+        });
+
+        //logica do carrinho, loclstorage e apis
+        //modal detalhes do produto
+
+        const modalDetalhes = document.getElementById('detalhes-modal');
+        const modalDetalhesContent = document.getElementById('detalhes-modal-content');
+
+        //abre o modal com informações do produto clicado
+        function abrirModalDetalhes(nome, preco, desc, img, id){
+            if (navigator.vibrate) navigator.vibrate(40);
+
+            document.getElementById('detalhes-nome').innerText = nome;
+            document.getElementById('detalhes-preco').innerText = preco.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
+            document.getElementById('detalhes-desc').innerText = desc;
+            document.getElementById('detalhes-btn-add').onclick = function() {
+                adicionarItem(id, nome, preco);
+                fecharModalDetalhes();
+            }
+            modalDetalhes.classList.remove('opacity-0', 'pointer-events-none');
+            setTimeout(() => {
+                modalDetalhesContent.classList.remove('scale-95');
+                modalDetalhesContent.classList.add('scale-100');
+            }, 10);
+        }
+
+        //fecha o modal detalhes do produto
+        function fecharModalDetalhes() {
+            modalDetalhesContent.classList.remove('scale-100');
+            modalDetalhesContent.classList.add('scale-95');
+            setTimeout(() => {
+                modalDetalhes.classList.add('opacity-0', 'pointer-events-none');
+            }, 300);
+        }
+
+        //fechar modal na area escura fora do conteudo
+        modalDetalhes.addEventListener('click', function(e) {
+            if (e.target === modalDetalhes) fecharModalDetalhes();
+        });
+
+        //carrinho
+        //array para armazenar itens do carrinho
+        let carrinho = [];
+        //elementos do DOM
+        const carrinhoFooter = document.getElementById('carrinho-footer');
+        const carrinhoTotalSpan = document.getElementById('carrinho-total');
+        //elementos do modal
+        const modal = document.getElementById('carrinho-modal');
+        const modalContent = document.getElementById('carrinho-modal-content');
+        const itensContainer = document.getElementById('carrinho-itens-container');
+        const modalTotalSpan = document.getElementById('modal-carrinho-total');
+        //verifica se o carrinho ja tem itens salvos no localstorage
+        function inicializarCarrinho() {
+            const carrinhoSalvo = localStorge.getItem('haruy_carrinho');
+            if (carrinhoSalvo) {
+                //se existir algo salvo converte de volta para array e atualiza o carrinho
+                carrinho = JSON.parse(carrinhoSalvo);
+                atualizarInterfaceCart();
+            }
+        }
+        
+        //adicionar ao carrinho
+        function adicionarItem(id, nome, preco){
+            if (navigator.vibrate){
+                navigator.vibrate(200);
+            }
+            const index = carrinho.findIndex(item => item.id === id);
+
+            if (index !== -1) {
+                carrinho[index].quantidade += 1;
+            }else{
+                carrinho.push({
+                    id: id,
+                    nome: nome,
+                    preco: preco,
+                    quantidade: 1
+                });
+            }
+            atualizarCarrinho();
+        }
+
+        //funcao modal abrir e fechar do carrinho
+        function abrirModalCarrinho() {
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            setTimeout(() => {
+                modalContent.classList.remove('translate-y-full', 'scale-95');
+            }, 10);
+        }
+
+        function fecharModalCarrinho(){
+            modalContent.classList.add('translate-y-full', 'scale-95');
+            setTimeout(() => {
+                modal.classList.add('opacity-0', 'pointer-events-none');
+            }, 300);
+        }
+        
+
+        //controles dentro do modal do carrinho (aumentar, diminuir, remover itens)
+        //controle de (+ / -) quantidade
+        function aumentarQuantidade(id) {
+            const index = carrinho.findIndex(item => item.id === id);
+            if (index !== -1) {
+                carrinho[index].quantidade += 1;
+                atualizarCarrinho();
+                //efeito de vibração para feedback tátil
+                if (navigator.vibrate) navigator.vibrate(50);
+            }
+        }
+
+        function diminuirQuantidade(id) {
+            const index = carrinho.findIndex(item => item.id === id);
+            if (index !== -1) {
+                if (carrinho[index].quantidade > 1) {
+                    carrinho[index].quantidade -= 1;
+                }else {
+                    carrinho.splice(index, 1);
+                    if (carrinho.length === 0) {
+                        fecharModalCarrinho();
+                    }
+                }
+                atualizarCarrinho();
+                if(navigator.vibrate) navigator.vibrate(50);
+            }
+        }
+
+        //persistencia do carrinho no localstorage e atualização da interface
+        function atualizarCarrinho() {
+            localStorage.setItem('haruy_carrinho', JSON.stringify(carrinho));
+            atualizarInterfaceCart();
+        }
+        function atualizarInterfaceCart() {
+            if (carrinho.length === 0) {
+                carrinhoFooter.classList.add('translate-y-full');
+                return;
+            }
+            const total = carrinho.reduce((acc, item) => acc + (item.preco * item.quantidade), 0);
+            const totalFormatado = total.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
+            //formata para a moeda brasileira R$
+            carrinhoTotalSpan.innerText = totalFormatado;
+            modalTotalSpan.innerText = totalFormatado;
+            //exibe a barra do carrinho (traz de volta pra tela)
+            carrinhoFooter.classList.remove('translate-y-full');
+            //renderiza a lista de itens dentro do modal
+            renderizarItensModal();
+        }
+
+        //funcao para redenrizar os itens do crrinho dentro do modal
+        function renderizarItensModal(){
+            if (!itensContainer) return;
+            itensContainer.innerHTML = '';
+            //para cada item no array, cria um HTML
+            carrinho.forEach(item => {
+                const subTotal = (item.preco * item.quantidade).toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
+                const precoUnit = item.preco.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
+                const divItem = document.createElement('div');
+                divItem.className = "flex justify-between items-center border-b pb-4 mt-2";
+
+                divItem.innerHTML = ` 
+                    <div class="flex-1">
+                        <h4 class="font-bold text-lg text-dark">${item.nome}</h4>
+                        <p class="text-sm text-muted">${precoUnit}</p>
+                        <p class="text-bold text-primary mt-1">${subTotal}</p>
+                    <div>
+                    <div class="flex items-center gap-3 bg-gray-100 p-2 rounded-xl">
+                        <button onclick="diminuirQuantidade('${item.id}')" class="w-8 h-8 flex justify-center items-center bg-white rounded-lg font-bold text-xl shadow-sm hover:text-primary active: scale-95 transition-all">-</button>
+                        <span class="font-bold text-lg w-4 text-center">${item.quantidade}</span>
+                        <button onclick="aumentarQuantidade('${item.id}')" class="w-8 h-8 flex justify-center items-center bg-white rounded-lg font-bold text-xl shadow-sm hover:text-primary active:scale-95 transition-all">+</button>
+                    </div>
+                `;
+                itensContainer.appendChild(divItem);
+            })
+        }
+
+        //fechar peido (geolocalização api - gps)
+        function fecharPedido() {
+            if (carrinho.length === 0) {
+                const btnPedido = document.getElementById('btn-fechar-pedido)');
+                if (!btnPedido) return;
+
+                const btnOriginalText = btnPedido.innerText;
+                btnPedido.innerText = "Buscando localização...";
+
+                navigator.geolocation.getCurrentPosition(
+                    //callback de sucesso
+                    (posicao) => {
+                        const lat = posicao.coords.latitude;
+                        const lng = posicao.coords.longitude;
+
+                        btnPedido.innerText = btnOriginalText;
+
+                        alert(`Pedido Fechado com Sucesso! 
+                        \nSua Localização: ${lat.toFixed(4)}, ${lng.toFixed(4)} 
+                        \nOs dados do carrinho serão limpos`);
+
+                        carrinho = [];
+                        fecharModalCarrinho();
+                        atualizarCarrinho();
+                    },
+                    //callback de erro
+                    (erro) => {
+                        btnPedido.innerText = btnOriginalText;
+                        console.error(erro);
+                        alert("Não foi possível obter sua localização.");
+                        carrinho = [];
+                        fecharModalCarrinho();
+                        atualizarCarrinho();
+                    }
+                );
+            }else{
+                alert(`Pedido Fechado com Sucesso! \n(navegador sem suporte GPS)`);
+                carrinho = [];
+                fecharModalCarrinho();
+                atualizarCarrinho();
+            }
+        }
+        inicializarCarrinho();
+    </script>
+
+    <script>
+        const menuBtn = document.getElementById("menuBtn");
+        const closeBtn = document.getElementById("closeBtn");
+        const mobileMenu = document.getElementById("mobileMenu");
+
+        menuBtn.addEventListener("click", () => {
+            mobileMenu.style.right = "0";
+        });
+
+        closeBtn.addEventListener("click", () => {
+            mobileMenu.style.right = "-100%";
+        });
+    </script>
+</body>
+
+</html>
+
